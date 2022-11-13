@@ -149,7 +149,7 @@ const createGraph = () => {
 			seats: filteredParty.electorateSeats + filteredParty.listSeats,
 			percentage: filteredParty.votePercent.toFixed(1)
 		}))
-		.sort((a, b) => a.seats < b.seats || a.percentage < b.percentage ? 1 : -1)
+		.sort((a, b) => b.seats - a.seats || b.percentage - a.percentage)
 		.concat({
 			name: 'OTHER',
 			seats: 0,
