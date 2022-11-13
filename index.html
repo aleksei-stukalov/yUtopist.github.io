@@ -2,42 +2,69 @@
 <html lang="en">
 
 <head>
-    <title>NZ Election 2020</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Zealand Electoral Commission</title>
     <link rel="stylesheet" href="static/styles.css">
+    <link rel="shortcut icon" href="static/favicon.ico" type="image/vnd.microsoft.icon">
+    <script src="src/View.js" type="module" defer></script>
 </head>
 
-<body class="flexed">
-    <!-- then load the MODEL -->
-    <script src='src/Candidate.js'></script>
-    <script src='src/Party.js'></script>
-    <script src='src/Electorate.js'></script>
-    <script src='src/Election.js'></script>
-    <!-- finally load the CONTROLLER -->
-    <script src='src/Controller.js'></script>
-    <script src='src/View.js'></script>
-    <script>
-        // this script is the <<CONTROLLER>> of the system
-        var theElection
-        function main() {
-            theElection = Controller.setup()
-
-            // This will be run from View.js
-            createLayout()
-        }
-        window.onload = main
-    </script>
-
-    <header id="page-header" class="flexed">
-        <h1 id="header-title">New Zealand Election 2020</h1>
-        <h2 id="header-sort-title">Sort:</h2>
-        <ul id="header-sort-list" class="flexed">
-            <li data-sort-by-alpha>Alphabetically</li>
-            <li data-sort-by-seats>by Seats</li>
-            <li data-sort-by-votes>by Votes</li>
-        </ul>
+<body>
+    <header id="page-header">
+        <div id="header-title">
+            <a href="index.html"><img src="static/svg/logo.svg" alt="Logo" width="200px"></a>
+            <div id="title-search">Search<span><img src="static/svg/search.svg" width="32px"></span></div>
+        </div>
+        <nav id="header-navigation">
+            <ul id="navigation-title">
+                <li>
+                    <button onclick="showHome()" class="title-button">
+                        Home
+                    </button>
+                </li>
+                <li>
+                    <button onclick="toggleMenuElections()" class="title-button">
+                        Election
+                        <span><img src="static/svg/arrow.svg" width="14px"></span>
+                    </button>
+                </li>
+            </ul>
+            <div id="navigation-dropmenu" class="dropmenu dropmenu-hidden">
+                <ul id="dropmenu-elections">
+                    <li>
+                        <button class="dropmenu-button btn-scndr">
+                            2017 General Election
+                        </button>
+                    </li>
+                    <li>
+                        <button onclick="showElection('Election 2020')" class="dropmenu-button btn-scndr">
+                            2020 General Election and Referendums
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </nav>
     </header>
 
-    <main id="page-main"></main>
+    <main id="page-content">
+        <!-- This portion of the HTML code is generated from View.js -->
+        <div id="warning">
+            <h2>
+                If you see this message, then you are trying to run this application from your local computer.<br>
+                Unfortunately this is not possible because of CORS error.<br>
+                <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors/CORSRequestNotHttp">
+                    You can learn more here.
+                </a>
+            </h2>
+            <h2>
+                The application is available on the link below, alternatively you can set-up a local web server and run
+                this application there.
+            </h2>
+            <a href="https://yutopist.github.io/">Click here to open the application hosted on GitHub pages</a>
+        </div>
+    </main>
 </body>
 
 </html>

@@ -1,25 +1,16 @@
-class Party {
-	constructor(newName) {
+export class Party {
+	constructor (newName) {
+		// Parameters
 		this.name = newName;
+		// State
+		this.voteCount = 0;
 		this.votePercent = 0;
-
-		this.allMyElectorates = []; // list of electorates where this party won
+		this.electorateSeats = 0;
+		this.listSeats = 0;
 	}
-
-	addElectorate(theElectorate) {
-		this.allMyElectorates.push(theElectorate);
-	}
-
-	countElectorates(theElectorate) {
-		// We want to know how many electorates this party won in.
-		let counter = 0;
-		this.allMyElectorates.forEach((electorate) => {
-			if (electorate.name === theElectorate) counter++;
-		});
-		return counter;
-	}
-
-	setVotePercent(newVotePercent) {
-		this.votePercent = newVotePercent;
-	}
+	// Set
+	setVoteCount(newCount) { this.voteCount = newCount }
+	setVotePercent(newPercent) { this.votePercent = newPercent }
+	setElectorateSeats(newSeatsCount) { this.electorateSeats = newSeatsCount }
+	setListSeats(newSeatsCount) { this.listSeats = newSeatsCount }
 }

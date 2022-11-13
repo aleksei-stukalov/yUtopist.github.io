@@ -1,38 +1,32 @@
-class Election {
-	constructor(electionYear) {
-		this.year = electionYear;
-		this.partyCount = 0;
-		this.electorateCount = 0;
+import { Party } from './Party.js';
+import { Electorate } from './Electorate.js';
 
+export class Election {
+	constructor (newYear, newName) {
+		// Parameters
+		this.year = newYear;
+		this.name = newName;
+		// Inherence
 		this.allMyParties = [];
 		this.allMyElectorates = [];
 	}
-
-	addParty(partyName) {
-		this.allMyParties.push(new Party(partyName));
-	}
-
-	addElectorate(electorateName) {
-		this.allMyElectorates.push(new Electorate(electorateName));
-	}
-
-	findParty(targetPartyName) {
-		return this.allMyParties.find((party) => party.name === targetPartyName);
-	}
-
-	findElectorate(targetElectorateName) {
-		return this.allMyElectorates.find((electorate) => electorate.name === targetElectorateName);
-	}
-
-	setWinningParty(targetElectorateName, partyName) {
-		const electorate = this.findElectorate(targetElectorateName);
-		const party = this.findParty(partyName);
-
-		electorate.setParty(party);
-		party.addElectorate(electorate);
-	}
-
-	setVotePercent(partyName, percentValue) {
-		this.findParty(partyName).votePercent = percentValue;
+	// Add
+	addParty(name) { this.allMyParties.push(new Party(name)); }
+	addElectorate(name) { this.allMyElectorates.push(new Electorate(name)); }
+	// Get
+	getParty(target) { return this.allMyParties.find(party => party.name === target); }
+	getElectorate(target) { return this.allMyElectorates.find(electorate => electorate.name === target); }
+	getPartyCount() { return this.allMyParties.length }
+	getElectorateCount() { return this.allMyElectorates.length }
+	// Set
+	setPartyVoteCount(target, value) { this.getParty(target).setVoteCount(value); }
+	setPartyVotePercent(target, value) { this.getParty(target).setVotePercent(value); }
+	setPartyElectorateSeats(target, value) { this.getParty(target).setElectorateSeats(value); }
+	setPartyListSeats(target, value) { this.getParty(target).setListSeats(value); }
+	// Push
+	pushPartiesToElectorates() {
+		this.allMyElectorates.forEach(electorate => {
+			this.allMyParties.forEach(party => electorate.addParty(party));
+		});
 	}
 }
