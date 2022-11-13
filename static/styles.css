@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+.flexed {
+	display: flex;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	box-sizing: border-box;
+	box-shadow: none;
+}
+
+html {
+	/* Declaring CSS Variables */
+	--clr-up: #333333;
+	--clr-down: #f3f3f3;
+	--clr-accent: #d43900;
+	--clr-scn-up: #f8d890;
+	--clr-scn-down: #f6e2b7;
+	--clr-scn-accent: #e7c576;
+
+	scroll-behavior: smooth;
+
+	font-family: 'Montserrat', sans-serif;
+	color: var(--clr-up);
+	background-color: var(--clr-down);
+}
+
+body {
+	min-height: 100vh;
+
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+#page-header {
+	width: 100%;
+	height: 6.25rem;
+	padding: 0 8rem;
+
+	color: var(--clr-down);
+	background-color: var(--clr-accent);
+
+	justify-content: space-between;
+	align-items: center;
+}
+
+#header-title {
+	flex: 1;
+	font-weight: 600;
+}
+
+#header-sort-title {
+	font-size: 1rem;
+	font-weight: 700;
+}
+
+#header-sort-list > li {
+	margin-left: 2rem;
+	cursor: pointer;
+}
+
+#header-sort-list > li:hover {
+	text-decoration: underline;
+}
+
+#page-main {
+	width: 60rem;
+	height: 100%;
+
+	padding: 2rem;
+}
+
+.main-section {
+	margin-top: 2rem;
+
+	justify-content: space-between;
+	align-items: flex-start;
+}
+
+#table-party > tr:not(.table-header) > td:not(:first-child) {
+	text-align: center;
+}
+
+.table-body > tr {
+	transition: 0.2s;
+}
+
+.table-body > tr > * {
+	padding: 0.2rem 1rem;
+}
+
+.table-header > * {
+	text-align: center;
+
+	font-size: 0.9rem;
+	font-weight: 500;
+	border-bottom: 1px solid #242424;
+}
+
+.table-body > tr:nth-of-type(even):not(:first-child) {
+	background-color: var(--clr-scn-up);
+}
+
+.table-body > tr:nth-of-type(odd):not(:first-child) {
+	background-color: var(--clr-scn-down);
+}
+
+.table-body > tr:not(:first-child):hover {
+	background-color: var(--clr-scn-accent);
+}
+
+.graph-body {
+	position: relative;
+	width: 360px;
+	height: 360px;
+	top: 1.8rem;
+
+	font-size: 0.9rem;
+	font-weight: 500;
+	background-color: var(--clr-scn-up);
+
+	justify-content: center;
+	align-items: center;
+}

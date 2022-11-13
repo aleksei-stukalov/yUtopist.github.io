@@ -1,7 +1,43 @@
 <!DOCTYPE html>
-<html>
-<body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+<html lang="en">
+
+<head>
+    <title>NZ Election 2020</title>
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+
+<body class="flexed">
+    <!-- then load the MODEL -->
+    <script src='src/Candidate.js'></script>
+    <script src='src/Party.js'></script>
+    <script src='src/Electorate.js'></script>
+    <script src='src/Election.js'></script>
+    <!-- finally load the CONTROLLER -->
+    <script src='src/Controller.js'></script>
+    <script src='src/View.js'></script>
+    <script>
+        // this script is the <<CONTROLLER>> of the system
+        var theElection
+        function main() {
+            theElection = Controller.setup()
+
+            // This will be run from View.js
+            createLayout()
+        }
+        window.onload = main
+    </script>
+
+    <header id="page-header" class="flexed">
+        <h1 id="header-title">New Zealand Election 2020</h1>
+        <h2 id="header-sort-title">Sort:</h2>
+        <ul id="header-sort-list" class="flexed">
+            <li data-sort-by-alpha>Alphabetically</li>
+            <li data-sort-by-seats>by Seats</li>
+            <li data-sort-by-votes>by Votes</li>
+        </ul>
+    </header>
+
+    <main id="page-main"></main>
 </body>
+
 </html>
