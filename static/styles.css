@@ -86,12 +86,35 @@ body {
 	padding: 0 var(--screen-margin);
 }
 
+#warning {
+	width: 100%;
+	margin-top: 10rem;
+	padding: 0 var(--screen-margin);
+
+	display: none;
+	justify-content: center;
+	align-items: flex-start;
+	flex-direction: column;
+}
+
+#warning > h2 {
+	padding-bottom: 5rem;
+	font-size: var(--font-size-xlg);
+	font-weight: 700;
+}
+
 #page-header {
 	z-index: 100;
 	width: 100%;
 	height: auto;
 
 	background: var(--color-hero);
+}
+
+#warning a {
+	font-size: var(--font-size-xlg);
+	font-weight: 700;
+	color: rgb(0, 64, 255);
 }
 
 #header-title {

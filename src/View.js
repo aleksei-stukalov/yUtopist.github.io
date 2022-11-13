@@ -3,6 +3,7 @@ import { Controller } from './Controller.js'
 // Setting up our controller
 // TODO rewrite it so we can have mutiple elections in an array.
 const theElection = new Controller().setup()
+document.querySelector('#warning').style.display = 'none'
 
 const d = document;
 const main = d.querySelector('#page-content')
@@ -148,13 +149,13 @@ const createGraph = () => {
 			seats: filteredParty.electorateSeats + filteredParty.listSeats,
 			percentage: filteredParty.votePercent.toFixed(1)
 		}))
+		.sort((a, b) => a.seats < b.seats || a.percentage < b.percentage ? 1 : -1)
 		.concat({
 			name: 'OTHER',
 			seats: 0,
 			percentage: theElection.allMyParties.filter(party => party.electorateSeats + party.listSeats === 0)
 				.reduce((accumulator, current) => accumulator + current.votePercent, 0).toFixed(1)
 		})
-		.sort((a, b) => a.seats < b.seats);
 
 	const graph = d.createElement('div')
 	graph.id = 'main-graph'
@@ -218,30 +219,32 @@ const createTable = () => {
 	})
 	table.appendChild(tableHeader)
 
-	theElection.allMyParties.sort((a, b) => a.listSeats < b.listSeats).forEach(party => {
-		const tableRow = d.createElement('tr')
+	theElection.allMyParties
+		.sort((a, b) => b.listSeats - a.listSeats || b.voteCount - a.voteCount)
+		.forEach(party => {
+			const tableRow = d.createElement('tr')
 
-		const partyName = d.createElement('td')
-		partyName.innerText = party.name
+			const partyName = d.createElement('td')
+			partyName.innerText = party.name
 
-		const votesCount = d.createElement('td')
-		votesCount.innerText = party.voteCount
+			const votesCount = d.createElement('td')
+			votesCount.innerText = party.voteCount
 
-		const percentage = d.createElement('td')
-		percentage.innerText = party.votePercent
+			const percentage = d.createElement('td')
+			percentage.innerText = party.votePercent
 
-		const electorateSeats = d.createElement('td')
-		electorateSeats.innerText = party.electorateSeats
+			const electorateSeats = d.createElement('td')
+			electorateSeats.innerText = party.electorateSeats
 
-		const listSeats = d.createElement('td')
-		listSeats.innerText = party.listSeats
+			const listSeats = d.createElement('td')
+			listSeats.innerText = party.listSeats
 
-		const totalSeats = d.createElement('td')
-		totalSeats.innerText = party.electorateSeats + party.listSeats
+			const totalSeats = d.createElement('td')
+			totalSeats.innerText = party.electorateSeats + party.listSeats
 
-		tableRow.append(partyName, votesCount, percentage, electorateSeats, listSeats, totalSeats)
-		table.appendChild(tableRow)
-	})
+			tableRow.append(partyName, votesCount, percentage, electorateSeats, listSeats, totalSeats)
+			table.appendChild(tableRow)
+		})
 
 	return table
 }
