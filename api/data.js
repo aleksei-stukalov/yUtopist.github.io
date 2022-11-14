@@ -1,3 +1,4 @@
+const dataJSON =
 {
 	"parties": [
 		"ACT New Zealand",

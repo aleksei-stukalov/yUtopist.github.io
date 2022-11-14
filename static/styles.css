@@ -91,7 +91,7 @@ body {
 	margin-top: 10rem;
 	padding: 0 var(--screen-margin);
 
-	display: none;
+	display: flex;
 	justify-content: center;
 	align-items: flex-start;
 	flex-direction: column;

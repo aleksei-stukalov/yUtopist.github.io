@@ -1,4 +1,4 @@
-export class Candidate {
+class Candidate {
 	constructor (newName, newParty) {
 		// Parameters
 		this.name = newName;

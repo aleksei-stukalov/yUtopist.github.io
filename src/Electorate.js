@@ -1,7 +1,4 @@
-import { Candidate } from "./Candidate.js";
-import { Party } from './Party.js'
-
-export class Electorate {
+class Electorate {
 	constructor (newName) {
 		// Parameters
 		this.name = newName;

@@ -1,10 +1,6 @@
-import { Controller } from './Controller.js'
+const theElection = Controller.setup()
 
-// Setting up our controller
 // TODO rewrite it so we can have mutiple elections in an array.
-const theElection = new Controller().setup()
-document.querySelector('#warning').style.display = 'none'
-
 const d = document;
 const main = d.querySelector('#page-content')
 const nav = d.querySelector('#header-navigation')
@@ -107,10 +103,6 @@ const showElection = (election) => {
 	// We want to create a section element for data
 	const section = d.createElement('section')
 	section.id = 'content-main'
-
-	// const asideTitle = d.createElement('h2')
-	// asideTitle.id = 'menu-title'
-	// asideTitle.innerText = electionTitle
 
 	const sectionTitle = d.createElement('h1')
 	sectionTitle.id = 'main-title'
@@ -228,19 +220,25 @@ const createTable = () => {
 			partyName.innerText = party.name
 
 			const votesCount = d.createElement('td')
-			votesCount.innerText = party.voteCount
+			partyVoteCount = party.voteCount === 0 ? '-' : party.voteCount
+			votesCount.innerText = partyVoteCount
 
 			const percentage = d.createElement('td')
-			percentage.innerText = party.votePercent
+			partyVotePercent = party.votePercent === 0 ? '-' : party.votePercent
+			percentage.innerText = partyVotePercent
 
 			const electorateSeats = d.createElement('td')
-			electorateSeats.innerText = party.electorateSeats
+			partyElectorateSeats = party.electorateSeats === 0 ? '-' : party.electorateSeats
+			electorateSeats.innerText = partyElectorateSeats
 
 			const listSeats = d.createElement('td')
-			listSeats.innerText = party.listSeats
+			partyListSeats = party.listSeats === 0 ? '-' : party.listSeats
+			listSeats.innerText = partyListSeats
 
 			const totalSeats = d.createElement('td')
-			totalSeats.innerText = party.electorateSeats + party.listSeats
+			partyTotalSeats = party.electorateSeats + party.listSeats
+			partyTotalSeats = partyTotalSeats === 0 ? '-' : partyTotalSeats
+			totalSeats.innerText = partyTotalSeats
 
 			tableRow.append(partyName, votesCount, percentage, electorateSeats, listSeats, totalSeats)
 			table.appendChild(tableRow)
