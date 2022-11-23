@@ -20,7 +20,7 @@ const showHome = () => {
 	closeMenuElections()
 	main.innerHTML = `
 	<div id="content-hero">
-		<h1>Welcome to Electoral Commision non-oficial portal!</h1>
+		<h1>Welcome to Electoral Commission non-official portal!</h1>
 		<h2>Please select Election year in the menu to display results.</h2>
 	</div>
 	`
